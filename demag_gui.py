@@ -45,8 +45,8 @@ global CURRENT_VERSION, PMAGPY_DIRECTORY
 CURRENT_VERSION = "v.0.33"
 # get directory in a way that works whether being used
 # on the command line or in a frozen binary
-import check_updates
-PMAGPY_DIRECTORY = check_updates.get_pmag_dir()
+#import check_updates
+
 #path = os.path.abspath(__file__)
 #PMAGPY_DIRECTORY = os.path.dirname(path)
 import matplotlib
@@ -81,11 +81,18 @@ except:
     pass
 
 #import pmag,demag_dialogs,ipmag
-import lib
-pmag = lib.pmag
-ipmag = lib.ipmag
-import demag_dialogs
+import lib.pmag as pmag
+import lib.ipmag as ipmag
+import lib.check_updates as check_updates
+#import lib
+#pmag = lib.pmag
+#ipmag = lib.ipmag
+#check_updates = lib.check_updates
+#import demag_dialogs
+import dialogs
+demag_dialogs = dialogs.demag_dialogs
 
+PMAGPY_DIRECTORY = check_updates.get_pmag_dir()
 from matplotlib.backends.backend_wx import NavigationToolbar2Wx
 import copy
 from copy import deepcopy
