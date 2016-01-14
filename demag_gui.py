@@ -152,9 +152,10 @@ class Zeq_GUI(wx.Frame):
         #set icon
         try:
             icon = wx.EmptyIcon()
-            icon.CopyFromBitmap(wx.Bitmap(os.path.join(PMAGPY_DIRECTORY, "images", "PmagPy.ico"), wx.BITMAP_TYPE_ANY))
+            icon_path = os.path.join(PMAGPY_DIRECTORY, 'images', 'PmagPy.ico')
+            icon.CopyFromBitmap(wx.Bitmap(icon_path, wx.BITMAP_TYPE_ANY))
             self.SetIcon(icon)
-        except:
+        except Exception as ex:
             pass
 
         # initialize acceptence criteria with NULL values

@@ -23,7 +23,13 @@ def get_pmag_dir():
         return os.environ['RESOURCEPATH']
     # this works for everything else
     except KeyError:
-        return os.path.dirname(os.path.realpath(__file__))
+        lib_dir = os.path.dirname(os.path.realpath(__file__))
+        lib_dir = lib_dir.strip(os.pathsep)
+        if lib_dir.endswith('lib'):
+            pmag_dir = lib_dir[:-3]
+        else:
+            pmag_dir = lib_dir
+        return pmag_dir # os.path.dirname(os.path.realpath(__file__))
 
 
 def is_frozen():
