@@ -58,7 +58,9 @@ def main():
         file=sys.argv[ind+1]
         input=numpy.loadtxt(file)
     else:
-        input = numpy.loadtxt(sys.stdin.readlines(),dtype=numpy.float)  # read from standard input
+        print main.__doc__
+        sys.exit()
+        #input = numpy.loadtxt(sys.stdin.readlines(),dtype=numpy.float)  # read from standard input
     if len(input.shape)>1: # list of directions
         dir1,dir2=input[:,0:2],input[:,2:]
     else: dir1,dir2=input[0:2],input[2:]
@@ -66,6 +68,10 @@ def main():
     for ang in angs:   # read in the data (as string variable), line by line
         print '%7.1f'%(ang)
         if out!="":out.write('%7.1f \n'%(ang))
+    if not input:
+        print main.__doc__
+        sys.exit()
+        
 
 if __name__ == "__main__":
     main() 
